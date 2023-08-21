@@ -8,9 +8,12 @@
 <h1>Excel Parser</h1>
 
 <h2>Upload an Excel file:</h2>
-<form th:action="@{/results}" method="post" enctype="multipart/form-data">
+<form th:action="@{/upload}" method="post" enctype="multipart/form-data">
     <input type="file" name="file" accept=".xlsx, .xls"/>
     <input th:if="not ${data}" type="submit" value="Upload"/>
+    <button th:if="${data}">
+        <a th:href="@{/download}">Download</a>
+    </button>
 </form>
 <div th:if="${data}">
     <h2>Data</h2>
