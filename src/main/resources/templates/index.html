@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+<h1>Excel Parser</h1>
+
+<h2>Upload an Excel file:</h2>
+<form th:action="@{/results}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".xlsx, .xls"/>
+    <input th:if="not ${data}" type="submit" value="Upload"/>
+</form>
+<div th:if="${data}">
+    <h2>Data</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        <tr th:each="model : ${data}">
+            <td th:text="${model.id}">Id</td>
+            <td th:text="${model.name}">Name</td>
+            <td th:text="${model.description}">Description</td>
+        </tr>
+    </table>
+    <button>
+        <a href="/">Home</a>
+    </button>
+</div>
+</body>
+</html>
